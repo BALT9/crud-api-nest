@@ -1,0 +1,13 @@
+GET http://127.0.0.1:3000/producto
+
+### Guardar
+POST http://127.0.0.1:3000/producto
+
+### Mostrar
+GET http://127.0.0.1:3000/producto/1
+
+### Modificar
+PATCH http://127.0.0.1:3000/producto/2
+
+### Eliminar
+DELETE http://127.0.0.1:3000/producto/5
