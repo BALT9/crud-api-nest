@@ -1,11 +1,17 @@
 import { Injectable } from '@nestjs/common';
+import { Producto } from './producto.entity';
 
 @Injectable()
 export class ProductoService {
-
+    // en servicio se importa entity
     // servicio que sera usado en el controlador
-    listar():string{
-        return "Lista de prod Servicios...";
+
+    // atributo productos es de tipo producto Entity
+    private productos: Producto[] = [{id: 1, nombre: "teclado", precio: 45.9, estado: true}];
+
+    // returna un array de productos 
+    listar():Producto[]{
+        return this.productos;
     }
 
     // any recibe cualquier tipo de dato 

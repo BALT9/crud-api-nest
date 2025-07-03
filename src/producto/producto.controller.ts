@@ -14,8 +14,8 @@ export class ProductoController {
 
     // funcion que retorna el tipo de dato
     @Get()
-    funListar():string{
-        // llamar al servicio 
+    funListar():any{
+        // llama al servicio -> entity
         return this.prodService.listar();
     }
 
