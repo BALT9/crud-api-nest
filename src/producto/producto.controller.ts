@@ -1,33 +1,41 @@
 import { Controller, Delete, Get, Patch, Post } from '@nestjs/common'; // importar get,post,delete,update
+import { ProductoService } from './producto.service';
 
 // ruta base 'producto'
 @Controller('producto')
 export class ProductoController {
+
+    // constructor que llama al servicio producto y a sus funciones
+    constructor(private readonly prodService:ProductoService){
+
+    }
+
     // aqui van las funciones
 
     // funcion que retorna el tipo de dato
     @Get()
     funListar():string{
-        return "Listar Producto";
+        // llamar al servicio 
+        return this.prodService.listar();
     }
 
     @Post()
     funCrear():string{
-        return "Guardar producto..";
+        return this.prodService.guardar({nombre: "teclado"});
     }
 
     @Get(":id")
     funMostrar(){
-        return "Mostrando producto";
+        return this.prodService.mostrar(1);
     }
 
     @Patch(":id")
     funModificar(){
-        return "Modificar producto";
+        return this.prodService.modificar(1,{});
     }
 
     @Delete(":id")
     funEliminar(){
-        return "Eliminar producto";
+        return this.prodService.eliminar(1);
     }
 }
