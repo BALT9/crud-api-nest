@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, Patch, Post } from '@nestjs/common'; // importar get,post,delete,update
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common'; // importar get,post,delete,update
 import { ProductoService } from './producto.service';
 
 // ruta base 'producto'
@@ -20,13 +20,13 @@ export class ProductoController {
     }
 
     @Post()
-    funCrear():string{
-        return this.prodService.guardar({nombre: "teclado"});
+    funCrear(@Body() datos: any){
+        return this.prodService.guardar(datos);
     }
 
     @Get(":id")
-    funMostrar(){
-        return this.prodService.mostrar(1);
+    funMostrar(@Param('id') id:number ){
+        return this.prodService.mostrar(id);
     }
 
     @Patch(":id")

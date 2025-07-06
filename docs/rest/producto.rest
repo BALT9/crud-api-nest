@@ -2,9 +2,15 @@ GET http://127.0.0.1:3000/producto
 
 ### Guardar
 POST http://127.0.0.1:3000/producto
+Content-Type: application/json
+
+{
+    "nombre": "Mesa",
+    "estado": true
+}
 
 ### Mostrar
-GET http://127.0.0.1:3000/producto/1
+GET http://127.0.0.1:3000/producto/11
 
 ### Modificar
 PATCH http://127.0.0.1:3000/producto/2
