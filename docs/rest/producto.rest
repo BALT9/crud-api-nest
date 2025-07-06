@@ -5,17 +5,21 @@ POST http://127.0.0.1:3000/producto
 Content-Type: application/json
 
 {
-    "nombre": "Mesa",
+    "nombre": "silla",
     "estado": true,
-    "precio": 230,
-    "material": "Madera"
+    "precio": 230
 }
 
 ### Mostrar
 GET http://127.0.0.1:3000/producto/1
 
 ### Modificar
-PATCH http://127.0.0.1:3000/producto/2
+PATCH  http://127.0.0.1:3000/producto/2
+Content-Type: application/json
+
+{   
+    "nombre": "si funciona"
+}
 
 ### Eliminar
-DELETE http://127.0.0.1:3000/producto/5
+DELETE http://127.0.0.1:3000/producto/2

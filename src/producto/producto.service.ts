@@ -1,5 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Producto } from './producto.entity';
+import { CreateProductoDto } from './dto/create-producto.dto';
+import { UpdateProductoDto } from './dto/update-producto.dto';
 
 @Injectable()
 export class ProductoService {
@@ -20,7 +22,7 @@ export class ProductoService {
     }
 
     // any recibe cualquier tipo de dato y retorna un tipo de dato Producto
-    guardar(datos: any):Producto{
+    guardar(datos: CreateProductoDto):Producto{
 
         const nuevoProducto: Producto = {
             id: this.id++,
@@ -40,11 +42,19 @@ export class ProductoService {
         return prod;
     }
 
-    modificar(id:number, datos:any):string{
-        return "modifical prod de Servicios..."+id;
+    modificar(id:number, datos:UpdateProductoDto):Producto{
+        // usa el servicio mostrar para buscar
+        const producto = this.mostrar(id);
+        Object.assign(producto, datos);
+        return producto;
     }
 
-    eliminar(id:number):string{
-        return "eliminar prod de Servicios..."+id;
+    eliminar(id:number):void{
+        const index = this.productos.findIndex(p => p.id == id);
+        if(index == -1){
+            throw new NotFoundException('Producto no encontrado');
+        }
+        this.productos.splice(index,1);
+
     }
 }

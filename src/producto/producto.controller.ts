@@ -1,6 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common'; // importar get,post,delete,update
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common'; // importar get,post,delete,update
 import { ProductoService } from './producto.service';
 import { CreateProductoDto } from './dto/create-producto.dto';
+import { UpdateProductoDto } from './dto/update-producto.dto';
 
 // ruta base 'producto'
 @Controller('producto')
@@ -27,16 +28,16 @@ export class ProductoController {
 
     @Get(":id")
     funMostrar(@Param('id') id:number ){
-        return this.prodService.mostrar(id);
+        return this.prodService.mostrar(id);    
     }
 
     @Patch(":id")
-    funModificar(){
-        return this.prodService.modificar(1,{});
+    funModificar(@Param('id') id:number, @Body() datos: UpdateProductoDto){
+        return this.prodService.modificar(id,datos);
     }
 
     @Delete(":id")
-    funEliminar(){
-        return this.prodService.eliminar(1);
+    funEliminar(@Param('id') id:number){
+        return this.prodService.eliminar(id);
     }
 }
