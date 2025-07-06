@@ -6,7 +6,9 @@ Content-Type: application/json
 
 {
     "nombre": "Mesa",
-    "estado": true
+    "estado": true,
+    "precio": 230,
+    "material": "Madera"
 }
 
 ### Mostrar

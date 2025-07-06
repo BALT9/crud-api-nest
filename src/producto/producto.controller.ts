@@ -1,5 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common'; // importar get,post,delete,update
 import { ProductoService } from './producto.service';
+import { CreateProductoDto } from './dto/create-producto.dto';
 
 // ruta base 'producto'
 @Controller('producto')
@@ -20,7 +21,7 @@ export class ProductoController {
     }
 
     @Post()
-    funCrear(@Body() datos: any){
+    funCrear(@Body() datos: CreateProductoDto ){
         return this.prodService.guardar(datos);
     }
 
