@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 ### Mostrar
-GET http://127.0.0.1:3000/producto/11
+GET http://127.0.0.1:3000/producto/1
 
 ### Modificar
 PATCH http://127.0.0.1:3000/producto/2
